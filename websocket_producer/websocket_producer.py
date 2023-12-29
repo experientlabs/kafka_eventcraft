@@ -6,6 +6,7 @@ import time
 # WebSocket URL (use "ws" for unencrypted connection)
 websocket_url = "ws://0.0.0.0:8765"
 
+
 async def generate_event():
     # Replace this with your actual event generation logic
     event = {
@@ -20,6 +21,7 @@ async def generate_event():
     }
     return json.dumps(event)
 
+
 async def send_events(websocket, path):
     while True:
         event = await generate_event()
@@ -29,6 +31,7 @@ async def send_events(websocket, path):
 
         # Wait for a short interval before sending the next event
         await asyncio.sleep(2)
+
 
 if __name__ == "__main__":
     start_server = websockets.serve(send_events, "0.0.0.0", 8765)
