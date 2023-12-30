@@ -5,6 +5,9 @@ import threading
 docker pull shapr3d/data-engineer-homework
 docker run --rm -p 8765:8765 shapr3d/data-engineer-homework
 Then run this script.
+
+copy file from docker to local 
+docker cp 6ed33763f257:/file/project/ .
 """
 
 
@@ -52,5 +55,3 @@ def start_websocket_client():
 
 if __name__ == "__main__":
     start_websocket_client()
-
-
