@@ -2,8 +2,8 @@ import csv
 import json
 import asyncio
 import websockets
-from data_engineer_homework.poisson import PoissonTriggerGenerator
-from data_engineer_homework.events import RandomEventGenerator
+from deh.poisson import PoissonTriggerGenerator
+from deh.events import RandomEventGenerator
 import random
 import numpy as np
 
@@ -12,10 +12,10 @@ RATE = 20
 random.seed(24)
 np.random.seed(24)
 
-with open("data_engineer_homework/country_codes.csv", "r") as file:
+with open("deh/country_codes.csv", "r") as file:
     country_codes = list(csv.reader(file))[1:]
 
-with open("data_engineer_homework/tracking_ids.json", "r") as file:
+with open("deh/tracking_ids.json", "r") as file:
     tracking_ids = json.load(file)
 
 
