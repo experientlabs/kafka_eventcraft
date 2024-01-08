@@ -41,3 +41,6 @@ kafka-topics.sh --list --bootstrap-server localhost:9092
 
 ## Producing to kafka
 ![kafka_producer.png](resources/img/kafka_producer.png)
+
+
+![consumer.png](resources/img/consumer.png)

@@ -1,3 +1,4 @@
 .idea/
 s3d_producer/deh/__pycache__
 utils/__pycache__/
+kafka_stream/data/
