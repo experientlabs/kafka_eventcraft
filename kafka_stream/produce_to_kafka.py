@@ -3,14 +3,18 @@ import websockets
 from confluent_kafka import Producer
 
 
-async def consume_websocket(url):
-    async with websockets.connect(url) as websocket:
-        while True:
-            event_data = await websocket.recv()
-            # Process or send the data to Kafka here
-            print(f"Received WebSocket event: {event_data}")
+# Note: Create a Topic Before Producing:
+# kafka-topics.sh --create --topic websocket_s3d --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1
 
-asyncio.get_event_loop().run_until_complete(consume_websocket("ws://0.0.0.0:8765"))
+
+# async def consume_websocket(url):
+#     async with websockets.connect(url) as websocket:
+#         while True:
+#             event_data = await websocket.recv()
+#             # Process or send the data to Kafka here
+#             print(f"Received WebSocket event: {event_data}")
+#
+# asyncio.get_event_loop().run_until_complete(consume_websocket("ws://0.0.0.0:8765"))
 
 
 def produce_to_kafka(topic, event_data):
@@ -37,4 +41,7 @@ async def consume_websocket_and_produce_to_kafka(url, kafka_topic):
 if __name__ == '__main__':
     url = "ws://0.0.0.0:8765"
     kafka_topic = "websocket_s3d"
-    consume_websocket_and_produce_to_kafka(url, kafka_topic)
+    # Create an event loop and run the coroutine within it
+    loop = asyncio.get_event_loop()
+    loop.run_until_complete(consume_websocket_and_produce_to_kafka(url, kafka_topic))
+
